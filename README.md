@@ -5,6 +5,8 @@ Flight Routefinder is a C++ program that calculates the best route between two a
 ## About
 Flight Routefinder is a C++ program that calculates the best route between two airports, using BFS, Dijkstra's algorithm.
 
+Link to the final presentation video: https://clipchamp.com/watch/DP9fXiJ4E4P  
+
 ## Installation
 
 The code for Flight Routefinder can be found at https://github.com/tudorgu2/cs225FinalProject. The code is found in `ParseFlights.hpp`, the data in `airports.dat` and `routes.dat`, the tests in `test_student.cpp`, and the written report in `results.md`.
