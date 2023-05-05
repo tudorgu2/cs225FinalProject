@@ -50,7 +50,7 @@ endif()
 # src_sources at src/CMakeLists.txt:5 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/workspaces/cs225FinalProject/src/*.cpp")
 set(OLD_GLOB
-  "/workspaces/cs225FinalProject/src/parser.cpp"
+  "/workspaces/cs225FinalProject/src/ParseFlights.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")

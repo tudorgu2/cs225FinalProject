@@ -1,0 +1,9 @@
+4/23/2023
+
+1. Complete parsing function, but did not get to BFS or Dijkstras
+
+2. Tudor and Rishi worked on implementing parsing of routes.dat and airports.dat which required using differed helper funcitons and distance calculations to set up our adjcencyList. Elise set up test cases for the constructors
+
+3. Parsing data was difficult because some of the data is incomplete, not in order, and some of the route data has airports not listed in airports
+
+4. Set up BFS

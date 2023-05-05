@@ -131,29 +131,29 @@ src/fast:
 	cd /workspaces/cs225FinalProject/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/build
 .PHONY : src/fast
 
-parser.o: parser.cpp.o
-.PHONY : parser.o
+ParseFlights.o: ParseFlights.cpp.o
+.PHONY : ParseFlights.o
 
 # target to build an object file
-parser.cpp.o:
-	cd /workspaces/cs225FinalProject/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/parser.cpp.o
-.PHONY : parser.cpp.o
+ParseFlights.cpp.o:
+	cd /workspaces/cs225FinalProject/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/ParseFlights.cpp.o
+.PHONY : ParseFlights.cpp.o
 
-parser.i: parser.cpp.i
-.PHONY : parser.i
+ParseFlights.i: ParseFlights.cpp.i
+.PHONY : ParseFlights.i
 
 # target to preprocess a source file
-parser.cpp.i:
-	cd /workspaces/cs225FinalProject/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/parser.cpp.i
-.PHONY : parser.cpp.i
+ParseFlights.cpp.i:
+	cd /workspaces/cs225FinalProject/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/ParseFlights.cpp.i
+.PHONY : ParseFlights.cpp.i
 
-parser.s: parser.cpp.s
-.PHONY : parser.s
+ParseFlights.s: ParseFlights.cpp.s
+.PHONY : ParseFlights.s
 
 # target to generate assembly for a file
-parser.cpp.s:
-	cd /workspaces/cs225FinalProject/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/parser.cpp.s
-.PHONY : parser.cpp.s
+ParseFlights.cpp.s:
+	cd /workspaces/cs225FinalProject/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/ParseFlights.cpp.s
+.PHONY : ParseFlights.cpp.s
 
 # Help Target
 help:
@@ -164,9 +164,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... src"
-	@echo "... parser.o"
-	@echo "... parser.i"
-	@echo "... parser.s"
+	@echo "... ParseFlights.o"
+	@echo "... ParseFlights.i"
+	@echo "... ParseFlights.s"
 .PHONY : help
 
 

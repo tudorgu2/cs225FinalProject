@@ -1,0 +1,10 @@
+4/10/2023
+
+1. Set up github repository and discussion plan of action with group for implementing structure and creating files. 
+    We realized we needed to add a parsing function that opens the files and reads them into adjacency lists for BFS and Dijkstras
+
+2. We figured out together how to set up the repository on each of our devices and sharing the github. 
+
+3. Wanted to run in the cs225 container, so setting up the build and CMake took troubleshooting.
+
+4. Begin parsing function to set up dijkstras and BFS
