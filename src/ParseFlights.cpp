@@ -267,3 +267,23 @@ vector<string> ParseFlights::BfsAlgorithm(const string& starting_airport, const 
     }
     return {"-1"}; 
 }
+
+vector<string> ParseFlights::Topairports() {
+    // Implementation of google pagerank
+    // Initialize number of airports
+    airportCount = airportIndex.size();
+    // Initialize transition matrix
+    vector<vector<double>> transitionMatrix(airportCount, vector<double>(airportCount, 0.0));
+    // Lambda matrix multiplication function
+    auto MultiplyMatrix = [](const vector<vector<double>>& l, const vector<vector<double>>& r) {
+        if (l[0].size() != r.size()) {
+            return vector<vector<double>>(l.size(), vector<double>(r[0].size(), -1.0));
+        }
+        vector<vector<double>> result(l.size(), vector<double>(r[0].size(), 0.0));
+        for(unsigned i = 0; i < l.size(); ++i)
+            for(unsigned j = 0; j < r[0].size(); ++j)
+                for(unsigned k = 0; k < l[0].size(); ++k)
+                    result[i][j] += l[i][k] * r[k][j];
+        return result;
+    }
+}
