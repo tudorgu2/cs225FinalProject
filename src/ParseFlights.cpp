@@ -280,10 +280,69 @@ vector<string> ParseFlights::Topairports() {
             return vector<vector<double>>(l.size(), vector<double>(r[0].size(), -1.0));
         }
         vector<vector<double>> result(l.size(), vector<double>(r[0].size(), 0.0));
-        for(unsigned i = 0; i < l.size(); ++i)
-            for(unsigned j = 0; j < r[0].size(); ++j)
-                for(unsigned k = 0; k < l[0].size(); ++k)
-                    result[i][j] += l[i][k] * r[k][j];
+
+        for(unsigned i = 0; i < l.size(); i++)
+            for(unsigned j = 0; j < r[0].size(); j++)
+                for(unsigned k = 0; k < l[0].size(); k++)
+                    result[i][j] = result[i][j] + (l[i][k] * r[k][j]);
         return result;
+    };
+    // Compute transition matrix --> using google pagerrank described method
+    // Loop through airports
+    for (pair<string, Airport> pair : airportIndex) {
+        string IATA = pair.first;
+        Airport airport = pair.second;
+
+        // List of adjacent airports
+        auto adjacent = adjacencyList[IATA];
+        double probability;
+        int index = airport.index;
+
+        // If no adjacent --> probability = 2 * (1.0 / airportCount)
+        if (adjacent.empty()) {
+            probability = 2 * (1.0 / airportCount);
+        } else {
+        // probability = 1.0 / # of adjacent airports
+            probability = 1.0 / adjacent.size();
+        }
+        for (auto i = 0; i < airportCount; i++) {
+            if (adjacent.empty()) {
+                transitionMatrix[i][index] = probability;
+            } else {
+                transitionMatrix[i][index] = 0;
+            }
+        }
+        // Set transition matrix value as probability
+        for (auto a : adjacent) {
+            transitionMatrix[airportIndex[a.IATA].index][index] = probability;
+        }
     }
+    // Apply damping to transition matrix (according to the Google's damping factor for the matrix)
+    for (auto row : transitionMatrix) {
+        for (auto value : row) {
+            value = (0.85 * value) + (0.15 / airportCount);
+        }
+    }
+    // Initialize steady-state
+    vector<vector<double>> matrix_steadyState(airportCount, vector<double>(1, 1.0 / airportCount));
+    // Compute the steady-state 
+    // (A steady-state calculation will typically require between 50 and 100 iterations per original PageRank algorithm used by Google)
+    for (unsigned i = 0; i < 75; i++) {
+        matrix_steadyState = MultiplyMatrix(transitionMatrix, matrix_steadyState);
+    }
+    // Ranks for each airport
+    vector<pair<double, string>> airportRanks(airportCount);
+    for (int i = 0; i < airportCount; i++) {
+        airportRanks[i] = {matrix_steadyState[i][0], indexs_[i]};
+    }
+    // Sort ranks
+    sort(airportRanks.rbegin(), airportRanks.rend());
+    // Store top 10 airports
+    vector<string> top_10_airports;
+    int count_ = 0;
+    while(count_ < airportCount && top_10_airports.size() < 10) {
+        top_10_airports.push_back(airportRanks[count_].second);
+        count_++;
+    }
+    return top_10_airports;
 }
